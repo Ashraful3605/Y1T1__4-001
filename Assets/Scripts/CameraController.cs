@@ -34,7 +34,7 @@ public class ThirdPersonCamera : MonoBehaviour
         float mouseY = Input.GetAxis("Mouse Y") * sensitivity;
         rotationX -= mouseY;
         rotationY -= mouseX;
-        rotationX = Mathf.Clamp(rotationX, -90, 90);
+        //rotationX = Mathf.Clamp(rotationX, -90, 90);
         transform.localRotation = Quaternion.Euler(rotationX, rotationY, 0);
         target.Rotate(Vector3.up * -mouseX);
     }
