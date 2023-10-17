@@ -36,7 +36,7 @@ public class ThirdPersonCamera : MonoBehaviour
         rotationY -= mouseX;
         rotationX = Mathf.Clamp(rotationX, -90, 90);
         transform.localRotation = Quaternion.Euler(rotationX, rotationY, 0);
-        target.Rotate(Vector3.up * mouseX);
+        target.Rotate(Vector3.up * -mouseX);
     }
     void FollowTarget()
     {

@@ -2,12 +2,16 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public Transform front;
     public float speed = 10f;
     Rigidbody rb;
+    private Vector3 startPos;
+
 
     // Start is called before the first frame update
     void Start()
     {
+        startPos = transform.position;
         rb = GetComponent<Rigidbody>(); 
     }
 
@@ -16,7 +20,6 @@ public class PlayerMovement : MonoBehaviour
     {
         float xMove = Input.GetAxisRaw("Horizontal");
         float zMove = Input.GetAxisRaw("Vertical");
-
-        rb.velocity = new Vector3(xMove, rb.velocity.y, zMove) * speed;
+        rb.velocity = new Vector3(-zMove, rb.velocity.y, xMove) * speed;
     }
 }
