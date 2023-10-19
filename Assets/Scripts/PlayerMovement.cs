@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public Transform front;
     public float speed = 10f;
     Rigidbody rb;
     private Vector3 startPos;
@@ -12,14 +11,19 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         startPos = transform.position;
-        rb = GetComponent<Rigidbody>(); 
+        rb = GetComponent<Rigidbody>();
+     
     }
 
     // Update is called once per frame
     void Update()
     {
-        float xMove = Input.GetAxisRaw("Horizontal");
-        float zMove = Input.GetAxisRaw("Vertical");
-        rb.velocity = new Vector3(-zMove, rb.velocity.y, xMove) * speed;
+        Transform camTransform = Camera.main.transform;
+        Vector3 camPosition = new Vector3(camTransform.position.x, transform.position.y, camTransform.position.z);
+        Vector3 direction = (transform.position - camPosition).normalized;
+        Vector3 forwardMovement = direction * Input.GetAxis("Vertical");
+        Vector3 horizontalMovement = camTransform.right * Input.GetAxis("Horizontal");
+        Vector3 movement = Vector3.ClampMagnitude(forwardMovement + horizontalMovement, 1);
+        transform.Translate(movement * speed * Time.deltaTime, Space.World);
     }
 }
