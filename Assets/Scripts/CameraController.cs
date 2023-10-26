@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ThirdPersonCamera : MonoBehaviour
+public class CameraController : MonoBehaviour
 {
     public Transform target;
+    public PlayerMovement playermovement;
     public float distance = 5.0f;
     public float sensitivity = 2.0f;
     private float rotationX = 0.0f;
@@ -21,6 +22,14 @@ public class ThirdPersonCamera : MonoBehaviour
     void Update()
     {
         HandleCameraInput();
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            distance = distance + 3;
+        }
+        if (Input.GetKeyUp(KeyCode.LeftShift))
+        {
+            distance = 5;
+        }
     }
 
     void LateUpdate()
