@@ -6,7 +6,7 @@ public class CameraController : MonoBehaviour
 {
     public Transform target;
     public PlayerMovement playermovement;
-    public float distance = 5.0f;
+    public float distance = 3.0f;
     public float sensitivity = 2.0f;
     private float rotationX = 0.0f;
     private float rotationY = 0.0f;
@@ -24,11 +24,11 @@ public class CameraController : MonoBehaviour
         HandleCameraInput();
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
-            distance = distance + 3;
+            distance = distance + 1f;
         }
         if (Input.GetKeyUp(KeyCode.LeftShift))
         {
-            distance = 5;
+            distance = 3.0f;
         }
     }
 
@@ -43,7 +43,14 @@ public class CameraController : MonoBehaviour
         float mouseY = Input.GetAxis("Mouse Y") * sensitivity;
         rotationX -= mouseY;
         rotationY += mouseX;
-        rotationX = Mathf.Clamp(rotationX, 0, 90);
+        if (distance > 3.0f)
+        {
+            rotationX = Mathf.Clamp(rotationX, 0, 8);
+        }
+        else
+        {
+            rotationX = Mathf.Clamp(rotationX, 0, 14);
+        }
         transform.localRotation = Quaternion.Euler(rotationX, rotationY, 0);
         target.Rotate(Vector3.up * -mouseX);
     }

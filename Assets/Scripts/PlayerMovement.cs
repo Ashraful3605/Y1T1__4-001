@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float baseSpeed = 1f;
+    public float baseSpeed = 5f;
     public float currentSpeed;
     public float sprint = 5f;
     Rigidbody rb;
