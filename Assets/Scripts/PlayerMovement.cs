@@ -22,7 +22,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.LeftControl))
         {
-            currentSpeed = 0.5f;
+            currentSpeed = baseSpeed - 1f;
         }
         else
         {

@@ -11,6 +11,7 @@ public class CameraController : MonoBehaviour
     public float sensitivity = 2.0f;
     private float rotationX = 0.0f;
     private float rotationY = 0.0f;
+    public Vector3 playerDirection;
 
 
     // Start is called before the first frame update
@@ -20,10 +21,16 @@ public class CameraController : MonoBehaviour
         Cursor.visible = false;
     }
 
+    void awake()
+    {
+        playerDirection = transform.localPosition.normalized;
+    }
+
     // Update is called once per frame
     void Update()
     {
         HandleCameraInput();
+        
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             distance = distance + 0.5f;
@@ -32,12 +39,21 @@ public class CameraController : MonoBehaviour
         {
             distance = 3.0f;
         }
+        if (Input.GetKeyDown(KeyCode.LeftControl))
+        {
+            distance = distance - 0.5f;
+        }
+        if (Input.GetKeyUp(KeyCode.LeftControl))
+        {
+            distance = 3.0f;
+        }
 
         LayerMask wall = LayerMask.GetMask("Wall");
 
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), 2.8f, wall))
         {
-            Debug.Log("Hit wall");
+            //Debug.Log("Hit wall");
+            //Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward), Color.green, wall);
         }
     }
     void LateUpdate()
