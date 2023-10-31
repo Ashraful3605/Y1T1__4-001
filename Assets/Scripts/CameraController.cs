@@ -24,7 +24,7 @@ public class CameraController : MonoBehaviour
         HandleCameraInput();
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
-            distance = distance + 1f;
+            distance = distance + 0.5f;
         }
         if (Input.GetKeyUp(KeyCode.LeftShift))
         {
