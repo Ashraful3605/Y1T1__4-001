@@ -5,11 +5,13 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
     public Transform target;
+    public Vector3 targetPosition;
     public PlayerMovement playermovement;
     public float distance = 3.0f;
     public float sensitivity = 2.0f;
     private float rotationX = 0.0f;
     private float rotationY = 0.0f;
+
 
     // Start is called before the first frame update
     void Start()
@@ -30,8 +32,14 @@ public class CameraController : MonoBehaviour
         {
             distance = 3.0f;
         }
-    }
 
+        LayerMask wall = LayerMask.GetMask("Wall");
+
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), 2.8f, wall))
+        {
+            Debug.Log("Hit wall");
+        }
+    }
     void LateUpdate()
     {
         FollowTarget();
@@ -43,7 +51,7 @@ public class CameraController : MonoBehaviour
         float mouseY = Input.GetAxis("Mouse Y") * sensitivity;
         rotationX -= mouseY;
         rotationY += mouseX;
-        if (distance > 3.0f)
+        if (distance > 2.0f)
         {
             rotationX = Mathf.Clamp(rotationX, 0, 8);
         }
@@ -56,7 +64,9 @@ public class CameraController : MonoBehaviour
     }
     void FollowTarget()
     {
-        Vector3 targetPosition = target.position - transform.forward * distance;
+        targetPosition = target.position - transform.forward * distance;
         transform.position = targetPosition;
     }
+    
 }
+
