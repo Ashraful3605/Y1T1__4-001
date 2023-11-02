@@ -29,7 +29,7 @@ public class CameraController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        HandleCameraInput();
+        
         isHit = false;
         if (Input.GetKeyDown(KeyCode.LeftShift)) //sprint bind to move camera back
         {
@@ -47,6 +47,7 @@ public class CameraController : MonoBehaviour
         {
             distance = 3.0f;
         }
+        HandleCameraInput();
     }
     void LateUpdate()
     {
