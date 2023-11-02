@@ -78,7 +78,7 @@ public class CameraController : MonoBehaviour
             {
                 //Debug.Log("Hit wall");
                 //Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward), Color.green, wall);
-                distance = distance - hit.distance;
+                distance = distance - hit.distance; //moves the camera towards the player by how far behind the object it is.
                 isHit = true;
             }
             if (!Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, 2.8f, wall))
