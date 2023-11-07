@@ -6,9 +6,9 @@ public class Patrol : MonoBehaviour
 {
     public Transform[] waypoints;
     private int currentWaypointIndex;
-    private float speed = 1f;
+    public float speed = 1f;
 
-    private float waitTime = 1f;
+    public float waitTime = 2f;
     private float waitCounter = 0f;
     private bool waiting = false;
 
