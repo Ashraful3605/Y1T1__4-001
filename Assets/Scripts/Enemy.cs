@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FOV : MonoBehaviour
+public class Enemy : MonoBehaviour
 {
     public float fov;
     public Transform target;
@@ -11,8 +11,16 @@ public class FOV : MonoBehaviour
     public bool isSeen;
 
     int MoveSpeed = 4;
-    int MaxDist = 5;
+    int MaxDist = 7;
     int MinDist = 3;
+
+    public Transform[] waypoints;
+    private int currentWaypointIndex;
+    public float speed = 1f;
+
+    public float waitTime = 2f;
+    private float waitCounter = 0f;
+    private bool waiting = false;
 
     // Update is called once per frame
     void Update()
@@ -37,6 +45,37 @@ public class FOV : MonoBehaviour
             Debug.Log("Nothing is there");
         }
     }
+
+    //Late Update is called once per frame after Update is called
+    void LateUpdate()
+    {
+        if (!isSeen)
+        {
+            if (waiting)
+            {
+                waitCounter += Time.deltaTime;
+                if (waitCounter < waitTime)
+                    return;
+                waiting = false;
+            }
+
+            Transform wp = waypoints[currentWaypointIndex];
+            if (Vector3.Distance(transform.position, wp.position) < 0.01f)
+            {
+                transform.position = wp.position;
+                waitCounter = 0f;
+                waiting = true;
+
+                currentWaypointIndex = (currentWaypointIndex + 1) % waypoints.Length;
+            }
+            else
+            {
+                transform.position = Vector3.MoveTowards(transform.position, wp.position, speed * Time.deltaTime);
+                transform.LookAt(wp.position);
+            }
+        }
+    }
+
 
     void CanSeeTarget()
     {
