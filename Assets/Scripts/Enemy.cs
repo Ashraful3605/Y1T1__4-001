@@ -35,11 +35,11 @@ public class Enemy : MonoBehaviour
         if (isSeen) //if the player has been seen
         {
             transform.LookAt(target);
-            if (Vector3.Distance(transform.position, target.position) >= MinDist)
+            if (Vector3.Distance(transform.position, target.position) >= MinDist) //if the distance of the player is bigger than the minimum distance
             {
-                transform.position += transform.forward * MoveSpeed * Time.deltaTime;
+                transform.position += transform.forward * MoveSpeed * Time.deltaTime; //move towards the player
 
-                if (Vector3.Distance(transform.position, target.position) <= MaxDist)
+                if (Vector3.Distance(transform.position, target.position) <= MaxDist) // if the distance of the player is less than the Maximum distance 
                 {
                     //Here Call any function U want Like Shoot at here or something
                 }
@@ -57,27 +57,27 @@ public class Enemy : MonoBehaviour
     {
         if (!isSeen)
         {
-            if (waiting)
+            if (waiting) //if the enemy is waiting
             {
-                waitCounter += Time.deltaTime;
-                if (waitCounter < waitTime)
-                    return;
-                waiting = false;
+                waitCounter += Time.deltaTime; //increment the time to wait by the time.deltatime
+                if (waitCounter < waitTime) //if this new value is less than the wait time
+                    return; 
+                waiting = false; //The enemy is no longer waiting
             }
 
-            Transform wp = waypoints[currentWaypointIndex];
-            if (Vector3.Distance(transform.position, wp.position) < 0.01f)
+            Transform wp = waypoints[currentWaypointIndex]; //put this new transform in the current way point array at the index of the current waypoint
+            if (Vector3.Distance(transform.position, wp.position) < 0.01f) //If the distance of the player to the waypoint is greater than 0.01
             {
-                transform.position = wp.position;
-                waitCounter = 0f;
-                waiting = true;
+                transform.position = wp.position; //The current position becomes the position of the waypoint 
+                waitCounter = 0f; //wait counter is set to 0
+                waiting = true; //the enemy is now waiting 
 
-                currentWaypointIndex = (currentWaypointIndex + 1) % waypoints.Length;
+                currentWaypointIndex = (currentWaypointIndex + 1) % waypoints.Length; //increment current waypoint index but make sure its smaller than the total length of this array
             }
             else
             {
-                transform.position = Vector3.MoveTowards(transform.position, wp.position, speed * Time.deltaTime);
-                transform.LookAt(wp.position);
+                transform.position = Vector3.MoveTowards(transform.position, wp.position, speed * Time.deltaTime); //else move towards the position of the last waypoint
+                transform.LookAt(wp.position); //look at the waypoint position
             }
         }
     }
