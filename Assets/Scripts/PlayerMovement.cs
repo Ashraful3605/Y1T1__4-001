@@ -20,7 +20,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.LeftControl)) //the actual speed of the movement when sprinting is decided 
+        if (Input.GetKey(KeyCode.LeftControl)) //the actual speed of the movement when crouching is decided 
         {
             currentSpeed = baseSpeed - 2f;
         }
@@ -29,7 +29,7 @@ public class PlayerMovement : MonoBehaviour
             currentSpeed = baseSpeed;
         }
 
-        if (Input.GetKey(KeyCode.LeftShift)) //the actual speed of the movement when crouching is decided
+        if (Input.GetKey(KeyCode.LeftShift)) //the actual speed of the movement when sprinting is decided
         {
             currentSpeed = sprint;
         }

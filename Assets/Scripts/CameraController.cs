@@ -31,7 +31,7 @@ public class CameraController : MonoBehaviour
     {
         
         isHit = false;
-        if (Input.GetKeyDown(KeyCode.LeftShift)) //sprint bind to move camera back
+        if (Input.GetKey(KeyCode.LeftShift)) //sprint bind to move camera back
         {
             distance = distance + 0.5f;
         }
@@ -39,7 +39,7 @@ public class CameraController : MonoBehaviour
         {
             distance = 3.0f;
         }
-        if (Input.GetKeyDown(KeyCode.LeftControl)) //crouch bind to move camera forward
+        if (Input.GetKey(KeyCode.LeftControl)) //crouch bind to move camera forward
         {
             distance = distance - 0.5f;
         }

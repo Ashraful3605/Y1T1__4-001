@@ -25,6 +25,12 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKey(KeyCode.LeftControl)) //when crouching is decided 
+        {
+            MaxDist = 5;
+            MinDist = 3;
+        }
+
         CanSeeTarget();  //runs custom method of checking 
         if (isSeen) //if the player has been seen
         {
