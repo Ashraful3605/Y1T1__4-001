@@ -31,6 +31,8 @@ public class CameraController : MonoBehaviour
     {
         
         isHit = false;
+
+        //Not working for some reason???
         if (Input.GetKey(KeyCode.LeftShift)) //sprint bind to move camera back
         {
             distance = distance + 0.5f;
@@ -77,7 +79,7 @@ public class CameraController : MonoBehaviour
         {
             if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, 2.8f, wall)) // fire a raycast from the camera to the player and if there is something between that distance then...
             {
-                //Debug.Log("Hit wall");
+                //Debug.Log("Hit wall"); Used to debug when there is a wall being hit between the camera and the player, so that there is some camera colliison and occlusion
                 //Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward), Color.green, wall);
                 distance = distance - hit.distance; //moves the camera towards the player by how far behind the object it is.
                 isHit = true;

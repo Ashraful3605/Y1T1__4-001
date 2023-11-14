@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FOV : MonoBehaviour
+public class GuardManager : MonoBehaviour
 {
     public float fov;
     public Transform target;

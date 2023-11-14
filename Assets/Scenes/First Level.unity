@@ -2266,7 +2266,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1110412001}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -2472,7 +2472,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 120
+  m_Constraints: 116
   m_CollisionDetection: 0
 --- !u!1 &1308651389
 GameObject:
@@ -3956,8 +3956,7 @@ GameObject:
   - component: {fileID: 2114278122}
   - component: {fileID: 2114278121}
   - component: {fileID: 2114278120}
-  - component: {fileID: 2114278119}
-  - component: {fileID: 2114278125}
+  - component: {fileID: 2114278126}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -3965,26 +3964,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2114278119
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2114278118}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ccdee13c5125f143af94101b0a854b9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waypoints:
-  - {fileID: 211980257}
-  - {fileID: 1080200607}
-  - {fileID: 211980257}
-  - {fileID: 103043921}
-  - {fileID: 211980257}
-  speed: 1
-  waitTime: 1
 --- !u!65 &2114278120
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4071,7 +4050,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2114278125
+--- !u!114 &2114278126
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4080,13 +4059,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 2114278118}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e4d9f4895758094ca66fc0178a4fd72, type: 3}
+  m_Script: {fileID: 11500000, guid: 761d6dad7283c9e4f8dd220f390682c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   fov: 2
   target: {fileID: 1308093754}
   viewAngle: 70
   viewRange: 2
+  isSeen: 0
+  waypoints:
+  - {fileID: 211980257}
+  - {fileID: 1080200607}
+  - {fileID: 211980257}
+  - {fileID: 103043921}
+  - {fileID: 211980257}
+  speed: 1
+  waitTime: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
