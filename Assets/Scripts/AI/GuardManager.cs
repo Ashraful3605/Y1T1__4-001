@@ -24,11 +24,11 @@ public class GuardManager : MonoBehaviour
             if (Vector3.Distance(transform.position, target.position) >= MinDist)
             {
                 transform.position += transform.forward * MoveSpeed * Time.deltaTime;
-
-                if (Vector3.Distance(transform.position, target.position) <= MaxDist)
-                {
+                
+                //if (Vector3.Distance(transform.position, target.position) <= MaxDist)
+                //{
                     //Here Call any function U want Like Shoot at here or something
-                }
+                //}
 
             }
         }
