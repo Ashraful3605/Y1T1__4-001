@@ -23,8 +23,10 @@ public class GuardManager : MonoBehaviour
             transform.LookAt(target);
             if (Vector3.Distance(transform.position, target.position) >= MinDist)
             {
-                transform.position += transform.forward * MoveSpeed * Time.deltaTime;
-                
+                while (isSeen)
+                {
+                    transform.position += transform.forward * MoveSpeed * Time.deltaTime;
+                }
                 //if (Vector3.Distance(transform.position, target.position) <= MaxDist)
                 //{
                     //Here Call any function U want Like Shoot at here or something
