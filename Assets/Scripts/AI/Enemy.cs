@@ -30,6 +30,11 @@ public class Enemy : MonoBehaviour
             MaxDist = 5;
             MinDist = 3;
         }
+        else
+        {
+            MaxDist = 7;
+            MinDist = 3;
+        }
 
         CanSeeTarget();  //runs custom method of checking 
         if (isSeen) //if the player has been seen
