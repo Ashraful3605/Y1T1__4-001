@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class Enemy : MonoBehaviour
 {
@@ -21,6 +23,10 @@ public class Enemy : MonoBehaviour
     public float waitTime = 2f;
     private float waitCounter = 0f;
     private bool waiting = false;
+
+    public int timeSeen;
+    public int timeSeen_GO; //changeable integer for the time the player 
+                            //can be seen until they reach the gameover screen
 
     // Update is called once per frame
     void Update()
@@ -46,15 +52,19 @@ public class Enemy : MonoBehaviour
 
                 if (Vector3.Distance(transform.position, target.position) <= MaxDist) // if the distance of the player is less than the Maximum distance 
                 {
-                    //Here Call any function U want Like Shoot at here or something
+                    timeSeen += 1;
                 }
 
             }
         }
         else // if the player has not been seen
         {
+            timeSeen = 0;
             Debug.Log("Nothing is there");
         }
+        if (timeSeen >= 5)
+            SceneManager.LoadScene("Game Over Scene");
+
     }
 
     //Late Update is called once per frame after Update is called
