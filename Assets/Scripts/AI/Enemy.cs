@@ -11,10 +11,10 @@ public class Enemy : MonoBehaviour
     public float viewAngle;
     public float viewRange;
     public bool isSeen;
+    public bool isSeenWR;
 
-    int MoveSpeed = 4;
     int MaxDist = 7;
-    int MinDist = 3;
+    float MinDist = 1f;
 
     public Transform[] waypoints;
     private int currentWaypointIndex;
@@ -31,6 +31,7 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         if (Input.GetKey(KeyCode.LeftControl)) //when crouching is decided 
         {
             MaxDist = 5;
@@ -43,29 +44,34 @@ public class Enemy : MonoBehaviour
         }
 
         CanSeeTarget();  //runs custom method of checking 
+        if (isSeenWR)
+            {
+                transform.position += transform.forward * speed * Time.deltaTime; //move towards the player
+            }
         if (isSeen) //if the player has been seen
         {
             transform.LookAt(target);
-            if (Vector3.Distance(transform.position, target.position) >= MinDist) //if the distance of the player is bigger than the minimum distance
+            
+            if (Vector3.Distance(transform.position,target.position)>= MinDist)
             {
-                transform.position += transform.forward * MoveSpeed * Time.deltaTime; //move towards the player
-
-                if (Vector3.Distance(transform.position, target.position) <= MaxDist) // if the distance of the player is less than the Maximum distance 
-                {
-                    timeSeen += 1;
-                }
-
+                isSeenWR = true;
+                transform.position += transform.forward * speed * Time.deltaTime; //move towards the player
+                    
             }
+            if (Vector3.Distance(transform.position, target.position) < 1)
+                {
+                    SceneManager.LoadScene("Game Over Scene");
+                }
+            
         }
         else // if the player has not been seen
         {
             timeSeen = 0;
             Debug.Log("Nothing is there");
         }
-        if (timeSeen >= 5)
-            SceneManager.LoadScene("Game Over Scene");
-
+        
     }
+
 
     //Late Update is called once per frame after Update is called
     void LateUpdate()
@@ -81,7 +87,7 @@ public class Enemy : MonoBehaviour
             }
 
             Transform wp = waypoints[currentWaypointIndex]; //put this new transform in the current way point array at the index of the current waypoint
-            if (Vector3.Distance(transform.position, wp.position) < 0.01f) //If the distance of the player to the waypoint is greater than 0.01
+            if (Vector3.Distance(transform.position, wp.position) < 0.01f) //If the distance of the enemy to the waypoint is greater than 0.01
             {
                 transform.position = wp.position; //The current position becomes the position of the waypoint 
                 waitCounter = 0f; //wait counter is set to 0
