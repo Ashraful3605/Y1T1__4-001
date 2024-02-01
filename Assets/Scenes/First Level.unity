@@ -512,7 +512,7 @@ GameObject:
   - component: {fileID: 318436023}
   - component: {fileID: 318436022}
   - component: {fileID: 318436021}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cover (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -932,7 +932,7 @@ GameObject:
   - component: {fileID: 448930757}
   - component: {fileID: 448930756}
   - component: {fileID: 448930755}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cover (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1037,7 +1037,7 @@ GameObject:
   - component: {fileID: 550123444}
   - component: {fileID: 550123443}
   - component: {fileID: 550123442}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cover
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1236,7 +1236,7 @@ GameObject:
   - component: {fileID: 742448135}
   - component: {fileID: 742448134}
   - component: {fileID: 742448133}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cover (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1341,7 +1341,7 @@ GameObject:
   - component: {fileID: 755122737}
   - component: {fileID: 755122736}
   - component: {fileID: 755122735}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cover (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1774,7 +1774,7 @@ GameObject:
   - component: {fileID: 857084002}
   - component: {fileID: 857084001}
   - component: {fileID: 857084000}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cover (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2129,6 +2129,7 @@ MonoBehaviour:
   playermovement: {fileID: 0}
   distance: 3
   sensitivity: 2
+  minDistance: 1.5
   playerPosition: {x: 0, y: 0, z: 0}
 --- !u!114 &963194231
 MonoBehaviour:
@@ -2259,7 +2260,7 @@ GameObject:
   - component: {fileID: 1004474040}
   - component: {fileID: 1004474039}
   - component: {fileID: 1004474038}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Floor
   m_TagString: Level
   m_Icon: {fileID: 0}
@@ -2605,7 +2606,7 @@ GameObject:
   - component: {fileID: 1110412004}
   - component: {fileID: 1110412003}
   - component: {fileID: 1110412002}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ceiling
   m_TagString: Level
   m_Icon: {fileID: 0}
@@ -3304,7 +3305,7 @@ GameObject:
   - component: {fileID: 1467513474}
   - component: {fileID: 1467513473}
   - component: {fileID: 1467513472}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cover (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3514,7 +3515,7 @@ GameObject:
   - component: {fileID: 1815829748}
   - component: {fileID: 1815829747}
   - component: {fileID: 1815829746}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cover (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4144,7 +4145,7 @@ GameObject:
   - component: {fileID: 2090922148}
   - component: {fileID: 2090922147}
   - component: {fileID: 2090922146}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cover (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

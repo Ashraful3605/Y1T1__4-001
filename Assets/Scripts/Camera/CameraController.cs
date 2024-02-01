@@ -11,8 +11,10 @@ public class CameraController : MonoBehaviour
     public float sensitivity = 2.0f;
     private float rotationX = 0.0f;
     private float rotationY = 0.0f;
+    public float minDistance = 3.0f;
     public Vector3 playerPosition;
     private bool isHit = false;
+
 
     // Start is called before the first frame update
     void Start()
@@ -49,11 +51,14 @@ public class CameraController : MonoBehaviour
         {
             distance = 3.0f;
         }
-        HandleCameraInput();
-    }
+
+		HandleCameraInput();
+
+	}
     void LateUpdate()
     {
-        FollowTarget(); // have the camera in its fixed position from the camera after the input has been dealt with and the distance from the player has been decided based on the input
+
+		FollowTarget(); // have the camera in its fixed position from the camera after the input has been dealt with and the distance from the player has been decided based on the input
         
     }
 
